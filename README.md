@@ -202,3 +202,24 @@ Override the host/port with `MANAGEMENT_SERVER_PORT` if you changed it; no Prome
     - Object exists in S3 bucket (check via AWS console or `aws s3 ls s3://your-bucket/bulletins/...`).
 5. Optional: run `curl -I "$(curl -s .../api/files/view?key=... | jq -r .url)"` to ensure the presigned URL is valid from the production environment.
 >>>>>>> upstream/main
+
+## Запуск приложения в Docker
+
+Для сборки и запуска приложения используются команды из `Makefile`:
+
+1. **Сборка Docker-образа:**
+    ```bash
+   make docker-build
+    ```
+2. **Запуск контейнера:**
+
+    ```bash
+    make docker-run
+    ```
+После этого приложение будет доступно по адресу http://localhost:8080.
+
+3. **Остановка контейнера:**
+
+    ```bash
+    make docker-stop
+    ```
