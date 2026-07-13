@@ -1,6 +1,10 @@
 <<<<<<< HEAD
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Mrac044/devops-engineer-from-scratch-project-315/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Mrac044/devops-engineer-from-scratch-project-315/actions)
+
+[![CI](https://github.com/Mrac044/devops-engineer-from-scratch-project-315/actions/workflows/ci.yml/badge.svg)](https://github.com/Mrac044/devops-engineer-from-scratch-project-315/actions/workflows/ci.yml)
+
+[![CD](https://github.com/Mrac044/devops-engineer-from-scratch-project-315/actions/workflows/cd.yml/badge.svg)](https://github.com/Mrac044/devops-engineer-from-scratch-project-315/actions/workflows/cd.yml)
 =======
 # Project DevOps Deploy
 
