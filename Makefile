@@ -27,11 +27,11 @@ lint-fix:
 .PHONY: build
 
 docker-build:
-	docker build -t billboard:latest .
+	docker build -t bulletin-board:latest .
 
 docker-run:
-	docker run -d -p 8080:8080 --name billboard
+	docker run -d -p 8080:8080 --name bulletin-board
 
 # Остановка контейнера
 docker-stop:
-	docker stop billboard
+	docker stop bulletin-board
