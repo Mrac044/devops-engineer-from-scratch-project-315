@@ -32,6 +32,5 @@ docker-build:
 docker-run:
 	docker run -d -p 8080:8080 --name bulletin-board
 
-# Остановка контейнера
 docker-stop:
 	docker stop bulletin-board
