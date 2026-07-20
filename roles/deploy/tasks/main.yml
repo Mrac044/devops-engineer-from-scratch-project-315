@@ -71,15 +71,23 @@
 
 - name: Create nginx etc directory
   ansible.builtin.file:
-    owner: "{{ ansible_user }}"
+    owner: root
+    group: root
     path: "/etc/nginx"
     state: directory
     mode: "0755"
+  become: yes
 
-- name: Copy nginx configuration
+- name: Update nginx configuration
   ansible.builtin.copy:
     src: "./services/nginx/nginx.conf"
     dest: "{{ nginx_conf_path }}"
+    mode: "0644"
+    owner: root
+    group: root
+  become: yes
+  notify:
+    - restart nginx container
 
 - name: Start docker container nginx reverse proxy
   community.docker.docker_container:
