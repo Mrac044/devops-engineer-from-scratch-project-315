@@ -41,11 +41,8 @@
     state: started
     force_kill: yes
     restart_policy: always
-    published_ports:
-      - "8080:8080" 
-      - "9090:9090"
     networks:
-      - name: bulletin-net
+      - name: "bulletin-net"
     volumes:
       - "{{ app_log_dir }}:/app/logs"
     restart: "{{ pull_result.changed }}"
@@ -59,3 +56,33 @@
       STORAGE_S3_BUCKET: "{{ s3_bucket }}"
       STORAGE_S3_REGION: "{{ s3_region }}"
       STORAGE_S3_ENDPOINT: "{{ s3_endpoint }}"
+
+- name: Create frontend directory
+  ansible.builtin.file:
+    owner: "{{ ansible_user }}"
+    path: "{{ frontend_dir }}/bulletin-board"
+    state: directory
+    mode: "0755"
+
+- name: Copy frontend
+  ansible.builtin.copy:
+    src: "./frontend/dist/"
+    dest: "{{ frontend_dir }}/bulletin-board/"
+
+- name: Copy nginx configuration
+  ansible.builtin.copy:
+    src: "./services/nginx/nginx.conf"
+    dest: "{{ nginx_conf_path }}"
+
+- name: Start docker container nginx reverse proxy
+  community.docker.docker_container:
+    name: "bulletin-board-nginx"
+    image: "nginx:latest"
+    state: started
+    networks: 
+      - name: "bulletin-net"
+    published_ports:
+      - "80:80"
+    volumes:
+      - "{{ nginx_conf_path }}:/etc/nginx/conf.d/default.conf"
+      - "{{ frontend_dir }}/bulletin-board:/app/public"
