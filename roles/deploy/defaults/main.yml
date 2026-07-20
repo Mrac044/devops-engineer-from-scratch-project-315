@@ -1,0 +1,15 @@
+---
+# defaults file for deploy
+
+image_name: "mrac04/bulletin-board"
+app_version: latest
+app_log_dir: "/var/log/bulletin-board"
+s3_endpointзна: "https://storage.yandexcloud.net"
+#SPRING_PROFILES_ACTIVE: prod
+#SPRING_DATASOURCE_URL:
+#SPRING_DATASOURCE_USERNAME:
+#SPRING_DATASOURCE_PASSWORD:
+#STORAGE_* и другие нужные переменные:
+#JAVA_OPTS:
+
+

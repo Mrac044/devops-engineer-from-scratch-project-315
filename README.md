@@ -227,3 +227,7 @@ Override the host/port with `MANAGEMENT_SERVER_PORT` if you changed it; no Prome
     ```bash
     make docker-stop
     ```
+
+## Доменное имя
+
+- bulletin-board.servebeer.com

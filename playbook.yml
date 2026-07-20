@@ -18,17 +18,6 @@
         name: geerlingguy.docker
       become: yes
 
-    - name: Install requirements
-      ansible.builtin.apt:
-        name:
-          - openjdk-21-jdk
-          - gradle
-          - make
-          - nodejs
-        state: present
-      become: yes
-
-
     - name: Set allow ports for firewall
       community.general.ufw:
         rule: allow
@@ -57,4 +46,9 @@
     - name: Enable firewall
       community.general.ufw:
         state: enabled
+      become: yes
+
+    - name: Deploy and run app on server
+      import_role: 
+        name: deploy
       become: yes

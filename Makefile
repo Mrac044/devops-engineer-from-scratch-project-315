@@ -34,3 +34,6 @@ docker-run:
 
 docker-stop:
 	docker stop bulletin-board
+
+deploy:
+	ansible-playbook -i inventory.ini playbook.yml --ask-vault-pass
