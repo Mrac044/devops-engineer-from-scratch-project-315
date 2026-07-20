@@ -69,6 +69,13 @@
     src: "./frontend/dist/"
     dest: "{{ frontend_dir }}/bulletin-board/"
 
+- name: Create nginx etc directory
+  ansible.builtin.file:
+    owner: "{{ ansible_user }}"
+    path: "/etc/nginx"
+    state: directory
+    mode: "0755"
+
 - name: Copy nginx configuration
   ansible.builtin.copy:
     src: "./services/nginx/nginx.conf"
