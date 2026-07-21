@@ -35,5 +35,8 @@ docker-run:
 docker-stop:
 	docker stop bulletin-board
 
+setup-roles:
+	ansible-galaxy install -r requirements.yml --force
+
 deploy:
 	ansible-playbook -i inventory.ini playbook.yml --ask-vault-pass
