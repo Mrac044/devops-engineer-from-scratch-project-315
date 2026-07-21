@@ -87,7 +87,7 @@
     group: root
   become: yes
   notify:
-    - restart nginx container
+    - Restart nginx container
 
 - name: Start docker container nginx reverse proxy
   community.docker.docker_container:
