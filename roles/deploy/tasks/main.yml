@@ -99,9 +99,11 @@
       - name: "bulletin-net"
     published_ports:
       - "80:80"
+      - "443:443"
     volumes:
       - "{{ nginx_conf_path }}:/etc/nginx/conf.d/default.conf"
       - "{{ frontend_dir }}/bulletin-board:/app/public"
+      - "/etc/letsencrypt:/etc/letsencrypt:ro"
 
 - name: Generate certificate
   import_role:
@@ -109,6 +111,7 @@
   vars:
     certbot_admin_email: "{{ admin_email }}"
     certbot_create_method: webroot
+    certbot_create_if_missing: yes
     certbot_certs:
       - domains:
           - "bulletin-board.servebeer.com"
