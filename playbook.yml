@@ -1,10 +1,4 @@
-- hosts: webservers
-
-  vars:
-    docker_users: ["{{ ansible_user }}"]
-    docker_install_compose: yes
-    docker_editions: "ce"
-    docker_apt_release_channel: stable
+- hosts: webservers  
 
   tasks:
 
